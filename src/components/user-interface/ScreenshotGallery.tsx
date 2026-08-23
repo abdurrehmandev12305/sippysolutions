@@ -64,7 +64,14 @@ export function ScreenshotGallery({ media }: { media: MediaItem[] }) {
 
   if (count === 0) {
     return (
-      <section className="bg-night-950 py-20 sm:py-24">
+      <section className="relative isolate border-t border-white/[0.05] bg-night-900/25 py-20 sm:py-24">
+        {/* Eases the tint out of the hero above, so the band reads as a
+            separate surface without a hard seam across the page. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-night-950 to-transparent"
+        />
+
         <Container>
           <div className="mx-auto max-w-md rounded-2xl border border-dashed border-night-700 bg-night-900/40 px-6 py-14 text-center">
             <ImageOff className="mx-auto size-8 text-night-500" aria-hidden />
@@ -79,7 +86,26 @@ export function ScreenshotGallery({ media }: { media: MediaItem[] }) {
   }
 
   return (
-    <section className="bg-night-950 pb-20 sm:pb-24">
+    <section className="relative isolate border-t border-white/[0.05] bg-night-900/25 pt-14 pb-20 sm:pt-16 sm:pb-24">
+      {/* Eases the tint out of the hero above, so the band reads as a
+          separate surface without a hard seam across the page. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-night-950 to-transparent"
+      />
+
+      {/* Monitor texture — a faint grid with scan lines over it. Both are
+          masked back to flat navy at the band's edges so the texture never
+          collides with the hero fade above or the footer rule below. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-[0.35] [mask-image:linear-gradient(to_bottom,transparent,black_14%,black_86%,transparent)]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 bg-scanlines [mask-image:linear-gradient(to_bottom,transparent,black_14%,black_86%,transparent)]"
+      />
+
       <Container>
         <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {media.map((item, index) => (
@@ -93,9 +119,16 @@ export function ScreenshotGallery({ media }: { media: MediaItem[] }) {
                   onClick={() => open(index)}
                   aria-label={`View ${item.alt} — ${index + 1} of ${count}`}
                   aria-haspopup="dialog"
-                  className="group block w-full overflow-hidden rounded-2xl border border-night-700 bg-night-900 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-500 hover:shadow-glow focus-visible:border-brand-500 motion-reduce:hover:translate-y-0"
+                  className="group block w-full rounded-2xl border border-brand-500/30 bg-[#0d0f1a] p-1.5 shadow-screenshot transition-all duration-300 hover:-translate-y-1 hover:border-brand-500 hover:shadow-screenshot-glow focus-visible:border-brand-500 focus-visible:shadow-screenshot-glow motion-reduce:hover:translate-y-0"
                 >
-                  <span className="relative block aspect-[16/10] overflow-hidden">
+                  {/* Header strip — the same accent that underlines the
+                      active nav item, tying the card to the site palette. */}
+                  <span
+                    aria-hidden
+                    className="block h-[3px] w-full rounded-full bg-gradient-to-r from-brand-600 via-brand-400 to-brand-600 opacity-70 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+                  />
+
+                  <span className="relative mt-1.5 block aspect-[16/10] overflow-hidden rounded-xl">
                     <Image
                       src={item.src}
                       alt=""
@@ -107,6 +140,21 @@ export function ScreenshotGallery({ media }: { media: MediaItem[] }) {
                       preload={index < 4}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                       className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transform-none"
+                    />
+
+                    {/* Resting tint. The screenshots are light-background
+                        UI, so a wash of night over them settles the tile into
+                        the page while leaving every label legible. It stays
+                        put under the hover scrim below, which is what darkens
+                        the tile for the eye button. */}
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 bg-night-950/20"
+                    />
+
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 rounded-xl ring-1 ring-inset ring-brand-400/20 shadow-[inset_0_14px_20px_-14px_rgb(7_10_19/0.95),inset_0_-14px_20px_-14px_rgb(7_10_19/0.95)] transition-colors duration-300 group-hover:ring-brand-400/50 group-focus-visible:ring-brand-400/50"
                     />
 
                     <span
@@ -125,7 +173,7 @@ export function ScreenshotGallery({ media }: { media: MediaItem[] }) {
 
                     <span
                       aria-hidden
-                      className="absolute left-3 top-3 rounded-full bg-night-950/70 px-2.5 py-1 text-[0.65rem] font-semibold tabular-nums tracking-widest text-night-200 backdrop-blur-sm"
+                      className="absolute left-3 top-3 grid size-9 place-items-center rounded-full bg-[#4F46E5] text-[0.7rem] font-bold tabular-nums text-white ring-2 ring-inset ring-white/20 shadow-[0_4px_14px_-2px_rgb(79_70_229/0.75)]"
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
