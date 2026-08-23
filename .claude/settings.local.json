@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\);console.log\\(JSON.stringify\\(p.dependencies,null,1\\),JSON.stringify\\(p.devDependencies,null,1\\)\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(node *)",
+      "Bash(npx next *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3111/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3111/about)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"TSC_EXIT:$?\")",
+      "Bash(curl -s -o - -w \"\\\\nHTTP %{http_code}\\\\n\" -X POST http://localhost:3000/api/contact -H \"Content-Type: application/json\" -d '{\"firstName\":\"Jane\",\"lastName\":\"Doe\",\"email\":\"jane@example.com\",\"service\":\"Class 4/5 Switch\",\"description\":\"Need 500 concurrent channels.\"}')",
+      "Bash(curl -s -o - -w \"\\\\nHTTP %{http_code}\\\\n\" -X POST http://localhost:3000/api/contact -H \"Content-Type: application/json\" -d '{\"firstName\":\"\",\"lastName\":\"Doe\",\"email\":\"nope\",\"service\":\"Bogus\",\"description\":\"\"}')",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\SYS\\\\Desktop\\\\sippysolutions\" -Force -File | Where-Object { $_.Name -match \"eslint|prettier\" } | Select-Object Name; Get-Content \"C:\\\\Users\\\\SYS\\\\Desktop\\\\sippysolutions\\\\tsconfig.json\")",
+      "PowerShell(Copy-Item *)",
+      "Bash(xargs -I{} basename {})",
+      "Bash(npm --version)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/ --max-time 5)",
+      "Bash(curl -s -D - -o /dev/null http://localhost:3000/)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //F //PID 18812)",
+      "Bash(taskkill //F //PID 4316)",
+      "Bash(taskkill *)",
+      "Bash(curl -s -D - -o /dev/null http://localhost:3000/api/auth/session -H \"Cookie: test=1\")",
+      "Bash(echo *)",
+      "Bash(npm audit *)",
+      "Bash(rm -f data/rate-limits.json data/rate-limits.json.tmp)",
+      "Bash(rm -rf .next)",
+      "Bash(curl -s -o /dev/null -w \"HTTP status: %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(curl *)",
+      "Bash(sed 's/=$//')",
+      "Bash(grep -oE '^ADMIN_PASSWORD_HASH=.{0,12}' .env.local)",
+      "Bash(grep -oE \"supabase\\\\.co/storage[^\\\\\"]{0,40}\")"
+    ]
+  }
+}

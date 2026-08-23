@@ -1,0 +1,18 @@
+node_modules/
+.next/
+out/
+build/
+next-env.d.ts
+*.tsbuildinfo
+
+.env*
+!.env.example
+
+# Runtime rate-limit state — ephemeral, and now the only thing left in data/.
+# Pricing and media moved to Supabase; their JSON files are gone.
+data/rate-limits.json
+data/rate-limits.json.tmp
+
+.DS_Store
+npm-debug.log*
+yarn-error.log*
