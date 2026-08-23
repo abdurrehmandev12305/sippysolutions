@@ -57,11 +57,14 @@ actually authorise every insert, update and delete — including uploads to the
 `media` bucket. Login is additionally rate-limited by IP (`src/lib/rate-limit.ts`,
 shared with the contact form).
 
-> **Deploying:** writes go to `data/pricing.json` on the local filesystem, so
-> the admin panel needs a host with a persistent disk (a VPS, a container with
-> a volume). On a read-only or ephemeral serverless filesystem the public page
-> still renders from the committed JSON, but saves will fail — move the store
-> to a database at that point; only `src/lib/pricing.ts` has to change.
+> **Deploying:** the rate limiter keeps its state in Upstash Redis when
+> `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` are set (Vercel KV's
+> `KV_REST_API_URL` / `KV_REST_API_TOKEN` work too — same service, and linking
+> the store in Vercel injects them for you). Without them it falls back to an
+> in-memory map, which is right for `next dev` and for a single-process host,
+> but on serverless only limits within one warm instance — so configure the
+> Redis credentials in production. Nothing else writes to the filesystem at
+> runtime any more.
 
 ## Project layout
 
