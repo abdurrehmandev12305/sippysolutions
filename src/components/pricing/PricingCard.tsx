@@ -4,7 +4,7 @@ import { PhoneCall } from "lucide-react";
 import type { Plan } from "@/lib/pricing";
 
 /**
- * One plan on `/pricing`: name, spec table, server location, and a solid blue
+ * One plan on `/pricing`: name, spec table, server location, and a solid red
  * price button that drops the visitor into the contact form.
  */
 export function PricingCard({ plan }: { plan: Plan }) {
@@ -19,7 +19,7 @@ export function PricingCard({ plan }: { plan: Plan }) {
   ];
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0f] shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/60 hover:shadow-glow">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-night-950 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/60 hover:shadow-glow">
       <header className="border-b border-white/10 px-6 py-6 text-center">
         <h3 className="text-lg font-bold tracking-tight text-white sm:text-xl">
           {plan.name}
@@ -41,7 +41,7 @@ export function PricingCard({ plan }: { plan: Plan }) {
       <div className="p-6 pt-4">
         <Link
           href="/contact"
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#4F46E5] px-5 py-3.5 text-sm font-bold text-white transition-colors duration-200 hover:bg-brand-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 sm:text-base"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-500 px-5 py-3.5 text-sm font-bold text-white transition-colors duration-200 hover:bg-brand-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 sm:text-base"
           aria-label={`Enquire about ${plan.name} — ${plan.currency}${plan.price} ${plan.period}`}
         >
           <PhoneCall className="size-4 shrink-0" aria-hidden />

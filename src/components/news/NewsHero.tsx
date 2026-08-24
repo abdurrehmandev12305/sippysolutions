@@ -1,18 +1,11 @@
-import type { ReactNode } from "react";
-
 import { Container } from "@/components/ui/Container";
+import { site } from "@/lib/site";
 
 /**
- * "USER INTERFACE" banner at the top of `/user-interface`. Same dark treatment
- * as the Services, About and Contact heroes: night-950 base, faint grid,
- * brand glow.
- *
- * `hint` is the one clause that depends on whether the gallery has anything in
- * it. It arrives as a slot rather than as a `count` number so this component
- * stays free of the Supabase read — the page works that out once and passes
- * down the resulting string (or `null`).
+ * "NEWS" banner at the top of `/news`. Same dark treatment as the Pricing,
+ * Services and User Interface heroes: night-950 base, faint grid, brand glow.
  */
-export function UserInterfaceHero({ hint }: { hint?: ReactNode }) {
+export function NewsHero() {
   return (
     <section className="relative isolate overflow-hidden bg-night-950 py-20 sm:py-24">
       <div
@@ -31,11 +24,11 @@ export function UserInterfaceHero({ hint }: { hint?: ReactNode }) {
       <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-brand-400 sm:text-sm">
-            See It In Action
+            Latest Updates
           </p>
 
           <h1 className="mt-5 text-4xl font-black uppercase tracking-tight text-white sm:text-6xl">
-            Interface
+            News
           </h1>
 
           <span
@@ -44,9 +37,7 @@ export function UserInterfaceHero({ hint }: { hint?: ReactNode }) {
           />
 
           <p className="mx-auto mt-7 max-w-2xl text-balance text-sm leading-relaxed text-night-300 sm:text-base">
-            A look inside the switch: billing, routing, CDR reporting and
-            real-time monitoring, all from one fully web-based console.
-            {hint}
+            Announcements, product updates and news from the {site.name} team.
           </p>
         </div>
       </Container>

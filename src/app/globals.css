@@ -6,30 +6,30 @@
    Change the values here to re-skin the whole site.
 --------------------------------------------------------------------------- */
 @theme {
-  /* Primary accent — indigo / blue */
-  --color-brand-50: #eef2ff;
-  --color-brand-100: #e0e7ff;
-  --color-brand-200: #c7d2fe;
-  --color-brand-300: #a5b4fc;
-  --color-brand-400: #818cf8;
-  --color-brand-500: #4f46e5;
-  --color-brand-600: #4338ca;
-  --color-brand-700: #3730a3;
-  --color-brand-800: #312e81;
-  --color-brand-900: #1e1b4b;
+  /* Primary accent — Monochrome+ red, used sparingly */
+  --color-brand-50: #fff1ef;
+  --color-brand-100: #ffe1dc;
+  --color-brand-200: #ffc2b8;
+  --color-brand-300: #ff9d8f;
+  --color-brand-400: #ff7a70;
+  --color-brand-500: #ff3b30;
+  --color-brand-600: #e0271d;
+  --color-brand-700: #b81f17;
+  --color-brand-800: #8f1811;
+  --color-brand-900: #5c100b;
 
-  /* Dark neutrals — cool "network operations centre" navy */
-  --color-night-50: #f4f6fb;
-  --color-night-100: #e6eaf4;
-  --color-night-200: #c8d0e3;
-  --color-night-300: #9aa6c2;
-  --color-night-400: #6b789a;
-  --color-night-500: #4a5675;
-  --color-night-600: #333d59;
-  --color-night-700: #222a41;
-  --color-night-800: #161c2d;
-  --color-night-900: #0d121f;
-  --color-night-950: #070a13;
+  /* Neutrals — Monochrome+ true black / white / gray */
+  --color-night-50: #ffffff;
+  --color-night-100: #f5f5f5;
+  --color-night-200: #d4d4d4;
+  --color-night-300: #999999;
+  --color-night-400: #808080;
+  --color-night-500: #666666;
+  --color-night-600: #4d4d4d;
+  --color-night-700: #2a2a2a;
+  --color-night-800: #1a1a1a;
+  --color-night-900: #101010;
+  --color-night-950: #000000;
 
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
@@ -38,8 +38,8 @@
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     monospace;
 
-  --shadow-glow: 0 0 0 1px rgb(79 70 229 / 0.25), 0 18px 50px -20px rgb(79 70 229 / 0.45);
-  --shadow-card: 0 1px 2px rgb(7 10 19 / 0.4), 0 20px 40px -28px rgb(7 10 19 / 0.7);
+  --shadow-glow: 0 0 0 1px rgb(255 59 48 / 0.25), 0 18px 50px -20px rgb(255 59 48 / 0.45);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 20px 40px -28px rgb(0 0 0 / 0.7);
 
   --animate-float: float 7s ease-in-out infinite;
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -97,8 +97,8 @@
   /* Faint technical grid used behind several dark sections. */
   .bg-grid {
     background-image:
-      linear-gradient(to right, rgb(154 166 194 / 0.07) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(154 166 194 / 0.07) 1px, transparent 1px);
+      linear-gradient(to right, rgb(153 153 153 / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(153 153 153 / 0.07) 1px, transparent 1px);
     background-size: 56px 56px;
   }
 
@@ -164,11 +164,11 @@
   0%,
   100% {
     stroke-opacity: 0.16;
-    filter: drop-shadow(0 0 3px rgb(34 211 238 / 0.12));
+    filter: drop-shadow(0 0 3px rgb(255 59 48 / 0.12));
   }
   50% {
     stroke-opacity: 0.5;
-    filter: drop-shadow(0 0 13px rgb(34 211 238 / 0.5));
+    filter: drop-shadow(0 0 13px rgb(255 59 48 / 0.5));
   }
 }
 
@@ -271,29 +271,29 @@
   0%,
   100% {
     stroke-opacity: 0.14;
-    filter: drop-shadow(0 0 3px rgb(168 85 247 / 0.1));
+    filter: drop-shadow(0 0 3px rgb(255 59 48 / 0.1));
   }
   50% {
     stroke-opacity: 0.42;
-    filter: drop-shadow(0 0 15px rgb(168 85 247 / 0.4));
+    filter: drop-shadow(0 0 15px rgb(255 59 48 / 0.4));
   }
 }
 
-/* Window controls: red → yellow → green, each dot a third of a cycle apart so
-   they read as a real title bar at rest and drift through the set slowly. */
+/* Window controls: three grays cycling a third of a cycle apart, so they read
+   as a real title bar at rest and drift through the set slowly. */
 .ssx-dot-cycle {
   animation: ssx-dot-cycle 6s var(--ssx-breathe) infinite;
 }
 @keyframes ssx-dot-cycle {
   0%,
   100% {
-    fill: #ef4444;
+    fill: #666666;
   }
   33% {
-    fill: #facc15;
+    fill: #d97706;
   }
   66% {
-    fill: #22c55e;
+    fill: #d4d4d4;
   }
 }
 
@@ -332,12 +332,12 @@
 @keyframes ssx-shield-breathe {
   0%,
   100% {
-    stroke: #4f46e5;
-    filter: drop-shadow(0 0 3px rgb(34 197 94 / 0));
+    stroke: #ff3b30;
+    filter: drop-shadow(0 0 3px rgb(255 59 48 / 0));
   }
   50% {
-    stroke: #22c55e;
-    filter: drop-shadow(0 0 15px rgb(34 197 94 / 0.5));
+    stroke: #ff7a70;
+    filter: drop-shadow(0 0 15px rgb(255 59 48 / 0.5));
   }
 }
 
@@ -580,11 +580,11 @@
 @keyframes ssx-kpi-card {
   0%,
   100% {
-    stroke: #4f46e5;
+    stroke: #ff3b30;
     stroke-opacity: 0.28;
   }
   45% {
-    stroke: #22d3ee;
+    stroke: #ff7a70;
     stroke-opacity: 0.85;
   }
 }
@@ -595,7 +595,7 @@
 @keyframes ssx-kpi-bar {
   0%,
   100% {
-    fill: #67e8f9;
+    fill: #999999;
     opacity: 0.45;
   }
   45% {
@@ -731,15 +731,15 @@
 @keyframes ssx-gutter-dot {
   0%,
   100% {
-    fill: #a5b4fc;
+    fill: #999999;
     opacity: 0.3;
   }
   6% {
-    fill: #fb923c;
+    fill: #d97706;
     opacity: 1;
   }
   20% {
-    fill: #a5b4fc;
+    fill: #999999;
     opacity: 0.3;
   }
 }

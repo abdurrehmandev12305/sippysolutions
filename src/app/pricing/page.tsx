@@ -40,7 +40,7 @@ async function PricingGrid() {
 
   if (plans.length === 0) {
     return (
-      <p className="mx-auto max-w-md rounded-2xl border border-white/10 bg-[#0a0a0f] px-6 py-10 text-center text-sm text-night-300">
+      <p className="mx-auto max-w-md rounded-2xl border border-white/10 bg-night-950 px-6 py-10 text-center text-sm text-night-300">
         Our plans are being updated. Please{" "}
         <a
           href={`mailto:${site.email}`}
@@ -75,7 +75,7 @@ export default function PricingPage() {
             <PricingGrid />
           </Suspense>
 
-          <div className="mt-14 rounded-2xl border border-white/10 bg-[#0a0a0f] px-6 py-10 text-center sm:px-10">
+          <div className="mt-14 rounded-2xl border border-white/10 bg-night-950 px-6 py-10 text-center sm:px-10">
             <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
               Need more capacity, or a different region?
             </h2>

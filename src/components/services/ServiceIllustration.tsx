@@ -10,8 +10,8 @@ import { cn } from "@/lib/cn";
  * the layout.
  *
  * Base palette is the design tokens in `globals.css`:
- * brand-500 #4f46e5 · brand-400 #818cf8 · brand-300 #a5b4fc
- * night-700 #222a41 · night-800 #161c2d · night-900 #0d121f
+ * brand-500 #ff3b30 · brand-400 #ff7a70 · brand-300 #999999
+ * night-700 #2a2a2a · night-800 #1a1a1a · night-900 #141414
  *
  * Every drawing is built the same way, so the six read as one set:
  *
@@ -31,27 +31,29 @@ import { cn } from "@/lib/cn";
  */
 
 const stroke = {
-  brand: "#4f46e5",
-  brandLight: "#818cf8",
-  brandPale: "#a5b4fc",
-  line: "#222a41",
-  panel: "#0d121f",
-  surface: "#161c2d",
+  brand: "#ff3b30",
+  brandLight: "#f5f5f5",
+  brandPale: "#999999",
+  line: "#2a2a2a",
+  panel: "#141414",
+  surface: "#1a1a1a",
 };
 
-/** Accent hues layered over the indigo base so nothing reads as "all blue". */
+/** Neutral grays layered over the black base — red is the dominant highlight
+ * per drawing; amber and muted brick-red are secondary accents used sparingly
+ * for depth. */
 const accent = {
-  cyan: "#22d3ee",
-  cyanPale: "#67e8f9",
-  green: "#22c55e",
-  greenBright: "#4ade80",
-  orange: "#f97316",
-  orangeBright: "#fb923c",
-  purple: "#a855f7",
-  purplePale: "#c084fc",
-  pink: "#f472b6",
-  yellow: "#facc15",
-  red: "#ef4444",
+  cyan: "#999999",
+  cyanPale: "#d4d4d4",
+  green: "#d4d4d4",
+  greenBright: "#f5f5f5",
+  orange: "#d97706",
+  orangeBright: "#d97706",
+  purple: "#4d4d4d",
+  purplePale: "#999999",
+  pink: "#8a4d47",
+  yellow: "#d97706",
+  red: "#666666",
   white: "#ffffff",
 };
 
@@ -74,7 +76,7 @@ function DepthFilters({ id }: { id: string }) {
           dx="0"
           dy="7"
           stdDeviation="9"
-          floodColor="#02040a"
+          floodColor="#000000"
           floodOpacity="0.7"
         />
       </filter>
@@ -85,7 +87,7 @@ function DepthFilters({ id }: { id: string }) {
           dx="0"
           dy="3"
           stdDeviation="4"
-          floodColor="#02040a"
+          floodColor="#000000"
           floodOpacity="0.65"
         />
       </filter>
@@ -95,7 +97,7 @@ function DepthFilters({ id }: { id: string }) {
         <feOffset in="SourceAlpha" dx="0" dy="2" result="off" />
         <feGaussianBlur in="off" stdDeviation="2.5" result="blur" />
         <feComposite in="SourceAlpha" in2="blur" operator="out" result="cut" />
-        <feFlood floodColor="#01030a" floodOpacity="0.9" result="tint" />
+        <feFlood floodColor="#000000" floodOpacity="0.9" result="tint" />
         <feComposite in="tint" in2="cut" operator="in" result="ring" />
         <feComposite in="ring" in2="SourceGraphic" operator="over" />
       </filter>
@@ -116,7 +118,7 @@ function RimGradient({ id }: { id: string }) {
   return (
     <linearGradient id={`${id}-rim`} x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stopColor="#ffffff" stopOpacity="0.3" />
-      <stop offset="35%" stopColor="#8ea3c9" stopOpacity="0.1" />
+      <stop offset="35%" stopColor="#a3a3a3" stopOpacity="0.1" />
       <stop offset="100%" stopColor="#000000" stopOpacity="0.4" />
     </linearGradient>
   );
@@ -128,7 +130,7 @@ function SheenGradients({ id }: { id: string }) {
     <>
       <linearGradient id={`${id}-sheen`} x1="0" y1="0" x2="1" y2="0.7">
         <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
-        <stop offset="50%" stopColor="#dceaff" stopOpacity="0.14" />
+        <stop offset="50%" stopColor="#ffffff" stopOpacity="0.14" />
         <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
       </linearGradient>
       <linearGradient id={`${id}-edge`} x1="0" y1="0" x2="1" y2="0">
@@ -145,10 +147,10 @@ function ServerRack() {
 
   /* One hue per bay — the sequence sweeps cyan → purple → green → orange. */
   const bays = [
-    { line: accent.cyan, wash: "#0f3242" },
-    { line: accent.purple, wash: "#2a1147" },
-    { line: accent.green, wash: "#0d3320" },
-    { line: accent.orange, wash: "#3a2109" },
+    { line: accent.cyan, wash: "#1f1f1f" },
+    { line: accent.purple, wash: "#242424" },
+    { line: accent.green, wash: "#1a1a1a" },
+    { line: accent.orange, wash: "#292929" },
   ];
 
   return (
@@ -160,19 +162,19 @@ function ServerRack() {
 
         {/* Brushed chassis — alternating bands read as milled metal. */}
         <linearGradient id={`${id}-metal`} x1="0" y1="0" x2="1" y2="0.35">
-          <stop offset="0%" stopColor="#0b1020" />
-          <stop offset="18%" stopColor="#232c47" />
-          <stop offset="34%" stopColor="#161d31" />
-          <stop offset="62%" stopColor="#1f2842" />
-          <stop offset="80%" stopColor="#131a2c" />
-          <stop offset="100%" stopColor="#0a0e1c" />
+          <stop offset="0%" stopColor="#0a0a0a" />
+          <stop offset="18%" stopColor="#262626" />
+          <stop offset="34%" stopColor="#161616" />
+          <stop offset="62%" stopColor="#202020" />
+          <stop offset="80%" stopColor="#131313" />
+          <stop offset="100%" stopColor="#0a0a0a" />
         </linearGradient>
 
         {/* Bay interior, darkest at the very top where the shadow falls. */}
         <linearGradient id={`${id}-bay`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#070b16" />
-          <stop offset="55%" stopColor="#0e1424" />
-          <stop offset="100%" stopColor="#080d1a" />
+          <stop offset="0%" stopColor="#070707" />
+          <stop offset="55%" stopColor="#0e0e0e" />
+          <stop offset="100%" stopColor="#080808" />
         </linearGradient>
 
         {/* LED bloom */}
@@ -226,7 +228,7 @@ function ServerRack() {
         height="232"
         rx="16"
         fill="none"
-        stroke={accent.cyan}
+        stroke="#ff3b30"
         strokeWidth="1.5"
         strokeOpacity="0.16"
       />
@@ -376,14 +378,14 @@ function WebBrowser() {
         <SheenGradients id={id} />
 
         <linearGradient id={`${id}-body`} x1="0" y1="0" x2="0.4" y2="1">
-          <stop offset="0%" stopColor="#1c2438" />
-          <stop offset="55%" stopColor="#141a2c" />
-          <stop offset="100%" stopColor="#0c111f" />
+          <stop offset="0%" stopColor="#1e1e1e" />
+          <stop offset="55%" stopColor="#161616" />
+          <stop offset="100%" stopColor="#0b0b0b" />
         </linearGradient>
         {/* Title bar sits proud of the body */}
         <linearGradient id={`${id}-chrome`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#28324d" />
-          <stop offset="100%" stopColor="#171e32" />
+          <stop offset="0%" stopColor="#2a2a2a" />
+          <stop offset="100%" stopColor="#181818" />
         </linearGradient>
         {/* Glass: light pools under the top edge and fades out */}
         <linearGradient id={`${id}-glass`} x1="0.1" y1="0" x2="0.5" y2="1">
@@ -449,7 +451,7 @@ function WebBrowser() {
         height="204"
         rx="16"
         fill="none"
-        stroke={accent.purple}
+        stroke="#ff3b30"
         strokeWidth="1.5"
         strokeOpacity="0.14"
       />
@@ -585,14 +587,14 @@ function LockShield() {
 
         {/* Brushed steel: fine alternating bands across the face. */}
         <linearGradient id={`${id}-brushed`} x1="0" y1="0" x2="1" y2="0.5">
-          <stop offset="0%" stopColor="#161d33" stopOpacity="0.95" />
-          <stop offset="14%" stopColor="#27304e" stopOpacity="0.9" />
-          <stop offset="26%" stopColor="#1a2139" stopOpacity="0.92" />
-          <stop offset="41%" stopColor="#2c3556" stopOpacity="0.88" />
-          <stop offset="55%" stopColor="#1b2340" stopOpacity="0.92" />
-          <stop offset="72%" stopColor="#252e4c" stopOpacity="0.9" />
-          <stop offset="88%" stopColor="#151b30" stopOpacity="0.95" />
-          <stop offset="100%" stopColor="#0f1428" stopOpacity="0.95" />
+          <stop offset="0%" stopColor="#161616" stopOpacity="0.95" />
+          <stop offset="14%" stopColor="#292929" stopOpacity="0.9" />
+          <stop offset="26%" stopColor="#1a1a1a" stopOpacity="0.92" />
+          <stop offset="41%" stopColor="#2e2e2e" stopOpacity="0.88" />
+          <stop offset="55%" stopColor="#1b1b1b" stopOpacity="0.92" />
+          <stop offset="72%" stopColor="#272727" stopOpacity="0.9" />
+          <stop offset="88%" stopColor="#151515" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="#0e0e0e" stopOpacity="0.95" />
         </linearGradient>
         {/* Light pooling in the shield's upper half */}
         <linearGradient id={`${id}-face`} x1="0.2" y1="0" x2="0.6" y2="1">
@@ -603,21 +605,21 @@ function LockShield() {
         {/* Rim: bright crown, dark underside */}
         <linearGradient id={`${id}-rim`} x1="0.3" y1="0" x2="0.7" y2="1">
           <stop offset="0%" stopColor="#ffffff" stopOpacity="0.4" />
-          <stop offset="30%" stopColor="#a5b4fc" stopOpacity="0.16" />
+          <stop offset="30%" stopColor="#999999" stopOpacity="0.16" />
           <stop offset="100%" stopColor="#000000" stopOpacity="0.35" />
         </linearGradient>
 
         {/* Padlock: chrome body, brighter cyan shackle */}
         <linearGradient id={`${id}-lock`} x1="0.1" y1="0" x2="0.5" y2="1">
-          <stop offset="0%" stopColor="#2b3557" />
-          <stop offset="38%" stopColor="#1a2138" />
-          <stop offset="70%" stopColor="#131a2e" />
-          <stop offset="100%" stopColor="#232c49" />
+          <stop offset="0%" stopColor="#2d2d2d" />
+          <stop offset="38%" stopColor="#1a1a1a" />
+          <stop offset="70%" stopColor="#131313" />
+          <stop offset="100%" stopColor="#242424" />
         </linearGradient>
         <linearGradient id={`${id}-shackle`} x1="0" y1="0" x2="0.4" y2="1">
-          <stop offset="0%" stopColor="#a5f3fc" />
-          <stop offset="45%" stopColor="#67e8f9" />
-          <stop offset="100%" stopColor="#1a7f92" />
+          <stop offset="0%" stopColor="#e5e5e5" />
+          <stop offset="45%" stopColor="#d4d4d4" />
+          <stop offset="100%" stopColor="#666666" />
         </linearGradient>
 
         {/* Pink sheen sweeping the face */}
@@ -727,7 +729,7 @@ function LockShield() {
           strokeWidth="6"
           strokeLinecap="round"
         />
-        <circle cx="197.5" cy="165.5" r="2.5" fill="#dbeafe" opacity="0.9" />
+        <circle cx="197.5" cy="165.5" r="2.5" fill="#f5f5f5" opacity="0.9" />
       </g>
 
       {/* Secure-connection ticks — each draws itself, alternating left / right.
@@ -771,7 +773,7 @@ function NetworkSwitch() {
   const id = "ssx-sw";
 
   /* Pulse hue rotates cyan → orange → purple around the endpoints. */
-  const hues = [accent.cyan, accent.orange, accent.purple];
+  const hues = [accent.cyan, accent.orange, "#8a4d47"];
 
   const endpoints = [
     { x: 64, y: 62 },
@@ -802,10 +804,10 @@ function NetworkSwitch() {
 
         {/* Matte-metal chassis with a light band across the upper third. */}
         <linearGradient id={`${id}-metal`} x1="0" y1="0" x2="0.25" y2="1">
-          <stop offset="0%" stopColor="#28324f" />
-          <stop offset="30%" stopColor="#1a2138" />
-          <stop offset="62%" stopColor="#121828" />
-          <stop offset="100%" stopColor="#0a0f1d" />
+          <stop offset="0%" stopColor="#2a2a2a" />
+          <stop offset="30%" stopColor="#1a1a1a" />
+          <stop offset="62%" stopColor="#121212" />
+          <stop offset="100%" stopColor="#0a0a0a" />
         </linearGradient>
         <linearGradient id={`${id}-gloss`} x1="0" y1="0" x2="0.3" y2="1">
           <stop offset="0%" stopColor="#ffffff" stopOpacity="0.12" />
@@ -813,8 +815,8 @@ function NetworkSwitch() {
         </linearGradient>
         {/* Domed node cap */}
         <radialGradient id={`${id}-cap`} cx="0.35" cy="0.3" r="0.8">
-          <stop offset="0%" stopColor="#20293f" />
-          <stop offset="100%" stopColor="#080c17" />
+          <stop offset="0%" stopColor="#202020" />
+          <stop offset="100%" stopColor="#080808" />
         </radialGradient>
 
         {hues.map((hue, index) => (
@@ -833,7 +835,7 @@ function NetworkSwitch() {
             x2="0"
             y2="1"
           >
-            <stop offset="0%" stopColor="#070b16" />
+            <stop offset="0%" stopColor="#070707" />
             <stop offset="60%" stopColor={hue} stopOpacity="0.55" />
             <stop offset="100%" stopColor={hue} />
           </linearGradient>
@@ -1011,7 +1013,7 @@ function NetworkSwitch() {
         fill={`url(#${id}-flare-0)`}
         opacity="0.6"
       />
-      <circle className="ssx-led" cx="252" cy="166" r="5" fill={accent.green} />
+      <circle className="ssx-led" cx="252" cy="166" r="5" fill="#ff3b30" />
     </>
   );
 }
@@ -1027,9 +1029,9 @@ function MonitoringDashboard() {
         <SheenGradients id={id} />
 
         <linearGradient id={`${id}-body`} x1="0" y1="0" x2="0.4" y2="1">
-          <stop offset="0%" stopColor="#1c2438" />
-          <stop offset="55%" stopColor="#141a2c" />
-          <stop offset="100%" stopColor="#0c111f" />
+          <stop offset="0%" stopColor="#1e1e1e" />
+          <stop offset="55%" stopColor="#161616" />
+          <stop offset="100%" stopColor="#0b0b0b" />
         </linearGradient>
         <linearGradient id={`${id}-glass`} x1="0.1" y1="0" x2="0.5" y2="1">
           <stop offset="0%" stopColor="#ffffff" stopOpacity="0.08" />
@@ -1037,8 +1039,8 @@ function MonitoringDashboard() {
           <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
         </linearGradient>
         <linearGradient id={`${id}-tile`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#0a0f1e" />
-          <stop offset="100%" stopColor="#121a2e" />
+          <stop offset="0%" stopColor="#0a0a0a" />
+          <stop offset="100%" stopColor="#131313" />
         </linearGradient>
         {/* Traffic area: dense at the line, gone by the baseline */}
         <linearGradient id={`${id}-area`} x1="0" y1="0" x2="0" y2="1">
@@ -1047,12 +1049,12 @@ function MonitoringDashboard() {
           <stop offset="100%" stopColor={accent.green} stopOpacity="0" />
         </linearGradient>
         <linearGradient id={`${id}-bar-warm`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#fdba74" />
-          <stop offset="100%" stopColor="#c2410c" />
+          <stop offset="0%" stopColor="#d97706" />
+          <stop offset="100%" stopColor="#92400e" />
         </linearGradient>
         <linearGradient id={`${id}-bar-cool`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#d8b4fe" />
-          <stop offset="100%" stopColor="#7e22ce" />
+          <stop offset="0%" stopColor="#999999" />
+          <stop offset="100%" stopColor="#4d4d4d" />
         </linearGradient>
         <radialGradient id={`${id}-head`}>
           <stop offset="0%" stopColor={accent.white} stopOpacity="0.9" />
@@ -1234,13 +1236,13 @@ function ApiCode() {
         <SheenGradients id={id} />
 
         <linearGradient id={`${id}-body`} x1="0" y1="0" x2="0.4" y2="1">
-          <stop offset="0%" stopColor="#1c2438" />
-          <stop offset="55%" stopColor="#141a2c" />
-          <stop offset="100%" stopColor="#0c111f" />
+          <stop offset="0%" stopColor="#1e1e1e" />
+          <stop offset="55%" stopColor="#161616" />
+          <stop offset="100%" stopColor="#0b0b0b" />
         </linearGradient>
         <linearGradient id={`${id}-chrome`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#28324d" />
-          <stop offset="100%" stopColor="#171e32" />
+          <stop offset="0%" stopColor="#2a2a2a" />
+          <stop offset="100%" stopColor="#181818" />
         </linearGradient>
         <linearGradient id={`${id}-glass`} x1="0.1" y1="0" x2="0.5" y2="1">
           <stop offset="0%" stopColor="#ffffff" stopOpacity="0.08" />
@@ -1256,21 +1258,21 @@ function ApiCode() {
           <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
           <stop offset="100%" stopColor="#ffffff" stopOpacity="0.35" />
         </linearGradient>
-        {/* Badge: chrome disc under a purple bloom */}
+        {/* Badge: chrome disc under a red bloom */}
         <linearGradient id={`${id}-badge`} x1="0.2" y1="0" x2="0.7" y2="1">
-          <stop offset="0%" stopColor="#2a3355" />
-          <stop offset="45%" stopColor="#141b2e" />
-          <stop offset="100%" stopColor="#0a0f1d" />
+          <stop offset="0%" stopColor="#2c2c2c" />
+          <stop offset="45%" stopColor="#141414" />
+          <stop offset="100%" stopColor="#0a0a0a" />
         </linearGradient>
         <linearGradient id={`${id}-bracket`} x1="0" y1="0" x2="0.6" y2="1">
           <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="55%" stopColor={accent.purplePale} />
-          <stop offset="100%" stopColor={accent.purple} />
+          <stop offset="55%" stopColor="#ff7a70" />
+          <stop offset="100%" stopColor="#ff3b30" />
         </linearGradient>
         <radialGradient id={`${id}-badge-bloom`}>
-          <stop offset="55%" stopColor={accent.purple} stopOpacity="0" />
-          <stop offset="80%" stopColor={accent.purple} stopOpacity="0.45" />
-          <stop offset="100%" stopColor={accent.purple} stopOpacity="0" />
+          <stop offset="55%" stopColor="#ff3b30" stopOpacity="0" />
+          <stop offset="80%" stopColor="#ff3b30" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="#ff3b30" stopOpacity="0" />
         </radialGradient>
 
         <clipPath id={`${id}-clip`}>
@@ -1394,7 +1396,7 @@ function ApiCode() {
           cy="212"
           r="34"
           fill={`url(#${id}-badge)`}
-          stroke={accent.purple}
+          stroke="#ff3b30"
           strokeOpacity="0.6"
           strokeWidth="2.5"
         />
@@ -1411,7 +1413,7 @@ function ApiCode() {
         className="ssx-badge-brackets"
         d="M297 200l-12 12 12 12M315 200l12 12-12 12"
         fill="none"
-        stroke={accent.purple}
+        stroke="#ff3b30"
         strokeOpacity="0.5"
         strokeWidth="7"
         strokeLinecap="round"

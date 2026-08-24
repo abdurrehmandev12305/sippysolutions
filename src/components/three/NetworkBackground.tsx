@@ -95,7 +95,7 @@ function setupScene(host: HTMLDivElement): () => void {
   nodeGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
   const nodeMaterial = new THREE.PointsMaterial({
-    color: 0x818cf8,
+    color: 0xf5f5f5,
     size: 0.14,
     sizeAttenuation: true,
     transparent: true,
@@ -115,7 +115,7 @@ function setupScene(host: HTMLDivElement): () => void {
   linkGeometry.setAttribute("position", linkAttribute);
 
   const linkMaterial = new THREE.LineBasicMaterial({
-    color: 0x4f46e5,
+    color: 0x999999,
     transparent: true,
     opacity: 0.22,
     depthWrite: false,

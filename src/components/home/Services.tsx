@@ -5,7 +5,7 @@ import { services } from "@/content/services";
 
 export function Services() {
   return (
-    <section id="services" className="relative scroll-mt-24 bg-[#050508] py-20 sm:py-28">
+    <section id="services" className="relative scroll-mt-24 bg-night-950 py-20 sm:py-28">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-grid opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)]"
@@ -24,7 +24,7 @@ export function Services() {
 
             return (
               <Reveal key={service.title} delay={index * 70}>
-                <article className="group relative h-full overflow-hidden rounded-2xl border border-zinc-800/80 bg-black p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50">
+                <article className="group relative h-full overflow-hidden rounded-2xl border border-night-700/80 bg-black p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/50">
                   {/* Hover wash */}
                   <div
                     aria-hidden
@@ -38,7 +38,7 @@ export function Services() {
                       {service.title}
                     </h3>
 
-                    <p className="mt-3 text-sm leading-relaxed text-zinc-200">
+                    <p className="mt-3 text-sm leading-relaxed text-night-200">
                       {service.description}
                     </p>
                   </div>

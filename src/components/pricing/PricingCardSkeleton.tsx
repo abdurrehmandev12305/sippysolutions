@@ -25,7 +25,7 @@ function PricingCardSkeleton() {
   return (
     <div
       aria-hidden
-      className="flex h-full animate-pulse flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0f] shadow-card"
+      className="flex h-full animate-pulse flex-col overflow-hidden rounded-2xl border border-white/10 bg-night-950 shadow-card"
     >
       {/* Stands in for the `text-lg sm:text-xl` plan name — h-7 matches that
           text's 28px line box, so the header reserves the height it will have. */}

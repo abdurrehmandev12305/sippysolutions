@@ -2,7 +2,7 @@ import { Activity, ArrowRight, ShieldCheck } from "lucide-react";
 
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
-import { HeroBackground } from "@/components/three/HeroBackground";
+import { HeroVideo } from "@/components/home/HeroVideo";
 
 const featureTags = [
   { label: "Real-Time Monitoring", icon: Activity },
@@ -12,8 +12,12 @@ const featureTags = [
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-night-950">
-      {/* 3D connectivity mesh */}
-      <HeroBackground className="pointer-events-none absolute inset-0 -z-10 opacity-70" />
+      {/* 3D wireframe sphere loop */}
+      <HeroVideo />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-20 bg-night-950/50"
+      />
 
       {/* Depth + "cable run" atmospherics, all pure CSS */}
       <div
@@ -42,9 +46,9 @@ export function Hero() {
       >
         <defs>
           <linearGradient id="cable" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#4f46e5" stopOpacity="0" />
-            <stop offset="50%" stopColor="#4f46e5" stopOpacity="0.55" />
-            <stop offset="100%" stopColor="#4f46e5" stopOpacity="0" />
+            <stop offset="0%" stopColor="#ff3b30" stopOpacity="0" />
+            <stop offset="50%" stopColor="#ff3b30" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#ff3b30" stopOpacity="0" />
           </linearGradient>
         </defs>
         <path
@@ -69,25 +73,25 @@ export function Hero() {
 
       <Container className="relative py-24 sm:py-32 lg:py-40">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="animate-fade-up text-xs font-semibold uppercase tracking-[0.32em] text-brand-400 sm:text-sm">
+          <p className="animate-fade-up text-xs font-semibold uppercase tracking-[0.32em] text-brand-400 sm:text-sm [animation-delay:1.5s]">
             VoIP Softswitch &amp; Class 4/5 Solutions
           </p>
 
-          <h1 className="mt-6 animate-fade-up text-4xl font-black uppercase leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 animate-fade-up text-4xl font-black uppercase leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl [animation-delay:1.65s]">
             <span className="bg-gradient-to-r from-brand-300 via-brand-500 to-brand-400 bg-clip-text text-transparent">
               Sippy
             </span>{" "}
             Solution
           </h1>
 
-          <p className="mx-auto mt-7 max-w-3xl animate-fade-up text-balance text-sm leading-relaxed text-night-300 sm:text-base lg:text-lg">
+          <p className="mx-auto mt-7 max-w-3xl animate-fade-up text-balance text-sm leading-relaxed text-night-300 sm:text-base lg:text-lg [animation-delay:1.8s]">
             Delivered to international Mobile, MVNO, and Fixed Line Operators;
             Wholesalers, Call Centers, and Retail/Enterprise SIP solution providers are
             the most secure, scalable, flexible, and affordable speech technology
             solutions.
           </p>
 
-          <ul className="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <ul className="mt-9 flex animate-fade-up flex-wrap items-center justify-center gap-3 [animation-delay:1.95s]">
             {featureTags.map(({ label, icon: Icon }) => (
               <li
                 key={label}
@@ -99,7 +103,7 @@ export function Hero() {
             ))}
           </ul>
 
-          <div className="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-11 flex animate-fade-up flex-col items-center justify-center gap-3 [animation-delay:2.1s] sm:flex-row">
             <ButtonLink href="#services" size="lg">
               Explore Services
               <ArrowRight className="size-4" aria-hidden />
