@@ -1,7 +1,9 @@
 import type { NextRequest } from "next/server";
+import type { User } from "@supabase/supabase-js";
 
 import { currentAdmin } from "@/lib/supabase-server";
 import { forbiddenOrigin, isSameOrigin } from "@/lib/csrf";
+import { ADMIN_UPLOAD_RATE_LIMIT, adminRateLimited } from "@/lib/admin-rate-limit";
 import { uploadCoverImage } from "@/lib/news";
 
 /**
@@ -16,14 +18,17 @@ import { uploadCoverImage } from "@/lib/news";
  * applies.
  */
 
-/** Guards a handler; returns a 401 response when there's no session. */
-async function requireAdmin(): Promise<Response | null> {
-  if (await currentAdmin()) return null;
+/** Guards a handler; returns the signed-in admin, or a 401 response when there's none. */
+async function requireAdmin(): Promise<{ user: User } | { denied: Response }> {
+  const user = await currentAdmin();
+  if (user) return { user };
 
-  return Response.json(
-    { ok: false, errors: ["You must be signed in."] },
-    { status: 401 },
-  );
+  return {
+    denied: Response.json(
+      { ok: false, errors: ["You must be signed in."] },
+      { status: 401 },
+    ),
+  };
 }
 
 function badRequest(errors: string[], status = 400) {
@@ -39,8 +44,15 @@ const MAX_REQUEST_BYTES = 12 * 1024 * 1024;
 
 export async function POST(request: NextRequest) {
   if (!isSameOrigin(request)) return forbiddenOrigin();
-  const denied = await requireAdmin();
-  if (denied) return denied;
+  const admin = await requireAdmin();
+  if ("denied" in admin) return admin.denied;
+
+  const limited = await adminRateLimited(
+    "admin-news-upload",
+    admin.user.id,
+    ADMIN_UPLOAD_RATE_LIMIT,
+  );
+  if (limited) return limited;
 
   const contentLength = Number(request.headers.get("content-length") ?? 0);
   if (contentLength > MAX_REQUEST_BYTES) {

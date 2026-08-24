@@ -19,7 +19,7 @@ export const site = {
     "Sippy Solution delivers secure, scalable and affordable VoIP softswitch, class 4/5 switching, SBC, billing and dedicated server solutions to international mobile, MVNO and fixed line operators, wholesalers, call centres and enterprise SIP providers.",
   url: "https://www.sippysolution.com",
   email: "support@sippysolution.com",
-  skype: "support@sippysolution.com",
+  teamsUrl: "https://teams.live.com/meet/9358436020778?p=XhVHLUq6UuWjKiGvl9",
   locations: "Germany · USA · and many more",
 } as const;
 

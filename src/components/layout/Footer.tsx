@@ -77,12 +77,19 @@ export function Footer() {
                   <span className="break-all">{site.email}</span>
                 </a>
               </li>
-              <li className="flex items-start gap-2.5 text-night-400">
-                <MessageSquare
-                  className="mt-0.5 size-4 shrink-0 text-brand-500"
-                  aria-hidden
-                />
-                <span className="break-all">Skype: {site.skype}</span>
+              <li>
+                <a
+                  href={site.teamsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2.5 text-night-400 transition-colors hover:text-brand-400"
+                >
+                  <MessageSquare
+                    className="mt-0.5 size-4 shrink-0 text-brand-500"
+                    aria-hidden
+                  />
+                  <span className="break-all">Chat on Teams</span>
+                </a>
               </li>
               <li className="flex items-start gap-2.5 text-night-400">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-brand-500" aria-hidden />

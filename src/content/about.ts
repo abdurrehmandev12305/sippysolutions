@@ -83,7 +83,7 @@ export const aboutAccordions: AccordionItem[] = [
           { text: "Name" },
           { text: "Company Name and website" },
           {
-            text: "Contact information including Email addresses, Phone numbers, WhatsApp, and Skype IDs",
+            text: "Contact information including Email addresses, Phone numbers, WhatsApp, and Microsoft Teams",
           },
           {
             text: "Other information relevant to products and services — we may require Time Zone, root password of the server, username of server, IPMI and KVM access of server for installation.",
@@ -130,7 +130,7 @@ export const aboutAccordions: AccordionItem[] = [
             text: "Payment is non-refundable once received. We will only return payment if the server, web portal, desktop client, or mobile application is not working fine during that month (our technical team first checks and evaluates within 24 hours, and may replace the server or server location).",
           },
           {
-            text: "For issues during the subscribed period, email support@sippysolution.com — within 24 hours our technical team will join you via Skype, TeamViewer, or any disk ID.",
+            text: "For issues during the subscribed period, email support@sippysolution.com — within 24 hours our technical team will join you via Microsoft Teams, TeamViewer, or any disk ID.",
           },
           {
             text: "During the whole month, our technical team will teach you how to configure the switch on the demo server. However, we do not provide configuration support on your live server (e.g. Rates Adding, Customer Adding, Vendor Adding, Routing Gateway, Mapping Gateway, or any Gateway support).",
@@ -155,4 +155,4 @@ export const aboutAccordions: AccordionItem[] = [
   },
 ];
 
-export const paymentNote = `Before making payment, every client needs to confirm our account details via our Skype ID (${site.skype}) or contact us via our support email (${site.email}).`;
+export const paymentNote = `Before making payment, every client needs to confirm our account details via Microsoft Teams or contact us via our support email (${site.email}).`;
