@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 
+import { Container } from "@/components/ui/Container";
+import { DemoButton } from "@/components/user-interface/DemoButton";
 import { UserInterfaceHero } from "@/components/user-interface/UserInterfaceHero";
 import { ScreenshotGallery } from "@/components/user-interface/ScreenshotGallery";
+import { readDemoAccess } from "@/lib/demo-access";
 import { readMedia } from "@/lib/media";
 import { site } from "@/lib/site";
 
@@ -35,13 +38,22 @@ export const metadata: Metadata = {
  * `loading.tsx` still covers the client-side-navigation case.
  */
 export default async function UserInterfacePage() {
-  const media = await readMedia();
+  const [media, demoAccess] = await Promise.all([readMedia(), readDemoAccess()]);
 
   return (
     <>
       <UserInterfaceHero
         hint={media.length > 0 ? " Tap any screens to view it full size." : null}
       />
+
+      <div className="relative isolate bg-night-950 pb-14 sm:pb-16">
+        <Container>
+          <div className="flex justify-center">
+            <DemoButton access={demoAccess} />
+          </div>
+        </Container>
+      </div>
+
       <ScreenshotGallery media={media} />
     </>
   );

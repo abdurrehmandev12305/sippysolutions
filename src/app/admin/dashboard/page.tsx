@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 
+import { DemoAccessManager } from "@/components/admin/DemoAccessManager";
 import { MediaManager } from "@/components/admin/MediaManager";
 import { NewsManager } from "@/components/admin/NewsManager";
 import { PricingManager } from "@/components/admin/PricingManager";
+import { readDemoAccess } from "@/lib/demo-access";
 import { readMedia } from "@/lib/media";
 import { readPosts } from "@/lib/news";
 import { readPlans } from "@/lib/pricing";
@@ -17,10 +19,11 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboardPage() {
-  const [plans, media, posts] = await Promise.all([
+  const [plans, media, posts, demoAccess] = await Promise.all([
     readPlans(),
     readMedia(),
     readPosts(),
+    readDemoAccess(),
   ]);
 
   return (
@@ -34,6 +37,10 @@ export default async function AdminDashboardPage() {
       <hr className="border-white/10" />
 
       <NewsManager initialPosts={posts} />
+
+      <hr className="border-white/10" />
+
+      <DemoAccessManager initialAccess={demoAccess} />
     </div>
   );
 }
