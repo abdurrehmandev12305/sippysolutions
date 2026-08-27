@@ -46,7 +46,7 @@ export default async function UserInterfacePage() {
         hint={media.length > 0 ? " Tap any screens to view it full size." : null}
       />
 
-      <div className="relative isolate bg-night-950 pb-14 sm:pb-16">
+      <div className="relative isolate bg-night-950 -mt-12 pb-4 sm:-mt-16 sm:pb-6">
         <Container>
           <div className="flex justify-center">
             <DemoButton access={demoAccess} />

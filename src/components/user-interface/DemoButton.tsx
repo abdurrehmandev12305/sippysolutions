@@ -94,7 +94,7 @@ export function DemoButton({ access }: { access: DemoAccess }) {
         className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-500/40 bg-white/[0.02] px-5 py-2.5 text-sm font-semibold text-night-100 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-500 hover:bg-brand-500/10 hover:text-white active:translate-y-0"
       >
         <KeyRound className="size-4" aria-hidden />
-        Demo
+        View Demo
       </button>
 
       {open ? (
