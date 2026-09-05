@@ -62,7 +62,7 @@ export default function Error({
         {/* The digest is the only handle support has to find this exact failure
             in the logs, so it is shown when React provides one. */}
         {error.digest ? (
-          <p className="mt-6 text-xs tracking-widest text-night-500">
+          <p className="mt-6 text-xs tracking-widest text-night-400">
             Reference: <span className="tabular-nums">{error.digest}</span>
           </p>
         ) : null}

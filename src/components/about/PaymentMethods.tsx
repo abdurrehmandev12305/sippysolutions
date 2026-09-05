@@ -91,7 +91,7 @@ export function PaymentMethods() {
                 </span>
 
                 {method.note ? (
-                  <span className="-mt-3 text-[0.7rem] uppercase tracking-wider text-night-500">
+                  <span className="-mt-3 text-[0.7rem] uppercase tracking-wider text-night-400">
                     {method.note}
                   </span>
                 ) : null}

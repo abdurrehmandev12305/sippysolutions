@@ -173,7 +173,7 @@ export function ScreenshotGallery({ media }: { media: MediaItem[] }) {
 
                     <span
                       aria-hidden
-                      className="absolute left-3 top-3 grid size-9 place-items-center rounded-full bg-[#4F46E5] text-[0.7rem] font-bold tabular-nums text-white ring-2 ring-inset ring-white/20 shadow-[0_4px_14px_-2px_rgb(79_70_229/0.75)]"
+                      className="absolute left-3 top-3 grid size-9 place-items-center rounded-full bg-brand-500 text-[0.7rem] font-bold tabular-nums text-white ring-2 ring-inset ring-white/20 shadow-[0_4px_14px_-2px_rgb(255_59_48/0.75)]"
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
